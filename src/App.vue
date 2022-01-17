@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <hello1/>
+    <page/>
   </div>
 </template>
 
 <script  lang="ts">
 import Vue from 'vue'
-import hello from './blocks/HelloVue.vue'
 import Component from 'vue-class-component'
+import Page from "./blocks/Page.vue";
 
 @Component({
   components: {
-    'hello1': hello
+    Page,
   },
 })
 export default class App extends Vue {

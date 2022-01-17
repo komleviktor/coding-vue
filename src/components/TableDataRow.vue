@@ -16,7 +16,7 @@
     <td
         class="afterHeaderCell notFirstColumnCell"
     >
-      <input
+      <textarea
           :value="alias"
           @change="update($event, 'alias')"
       />
@@ -78,11 +78,11 @@
 
 <style lang="scss" scoped>
 $med-light: #dadada;
-$table-blue: #034580;
 $mobile           : 48em;      // 768px
 $tablet           : 62em;      // 992px
 
 .borderedInBottom {
+  display: block;
   border-bottom: 1px solid $med-light;
 }
 
@@ -94,8 +94,8 @@ $tablet           : 62em;      // 992px
 
   @media (min-width: $mobile) {
     .afterHeaderCell {
-      padding-top: 22px;
-      padding-bottom: 22px;
+      padding-top: 5px;
+      padding-bottom: 5px;
     }
   }
 
@@ -107,22 +107,26 @@ $tablet           : 62em;      // 992px
 
     @media (min-width: $tablet) {
       width: 50px;
-      padding-left: 30px;
+      text-align: center;
+      padding-left: initial;
     }
   }
 
   .notFirstColumnCell {
+    text-align: center;
+
     @media (min-width: $mobile) {
       padding-left: 80px;
     }
 
     @media (min-width: $tablet) {
-      padding-left: 120px;
+      width: 220px;
+      padding-left: initial;
     }
   }
 
   .secondColumnCell {
-    text-align: right;
+    text-align: center;
   }
 }
 </style>

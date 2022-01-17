@@ -2,60 +2,40 @@
   <thead class="main">
   <tr>
     <th
-        class="headCell firstColumnCell"
+        class="headCell, firstColumnCell"
         scope="col"
     >
       {{ id }}
     </th>
     <th
-        class="headCell secondColumnCell notFirstColumnCell"
+        class="headCell, secondColumnCell, notFirstColumnCell"
         scope="col"
     >
       {{ name }}
     </th>
     <th
-        class="headCell notFirstColumnCell"
+        class="headCell, notFirstColumnCell"
         scope="col"
     >
       {{ alias }}
     </th>
     <th
-        class="headCell notFirstColumnCell"
-        scope="col"
-    >
-    </th>
-    <th
-        class="headCell notFirstColumnCell"
+        class="headCell, notFirstColumnCell"
         scope="col"
     >
       {{ sourceSystem }}
     </th>
     <th
-        class="headCell notFirstColumnCell"
-        scope="col"
-    >
-    </th>
-    <th
-        class="headCell notFirstColumnCell"
+        class="headCell, notFirstColumnCell"
         scope="col"
     >
       {{ category }}
-    </th>
-    <th
-        class="headCell notFirstColumnCell"
-        scope="col"
-    >
     </th>
     <th
         class="headCell, notFirstColumnCell"
         scope="col"
     >
       {{ updatedBy }}
-    </th>
-    <th
-        class="headCell, notFirstColumnCell"
-        scope="col"
-    >
     </th>
   </tr>
   </thead>
@@ -78,10 +58,12 @@
 
 
 <style lang="scss" scoped>
+$med-light: #dadada;
 $mobile           : 48em;      // 768px
 $tablet           : 62em;      // 992px
 .main {
-
+  display: block;
+  border-bottom: 1px solid $med-light;
   td {
     cursor: default;
     word-break: break-word;
@@ -100,8 +82,9 @@ $tablet           : 62em;      // 992px
       }
 
       @media (min-width: $tablet) {
-        width: 130px;
-        padding-left: 30px;
+        width: 50px;
+        text-align: center;
+        padding-left: initial;
       }
     }
 
@@ -121,7 +104,8 @@ $tablet           : 62em;      // 992px
       }
 
       @media (min-width: $tablet) {
-        padding-left: 120px;
+        width: 220px;
+        padding-left: initial;
       }
     }
   }

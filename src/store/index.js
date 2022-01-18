@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import mockData from "./mockData.json";
+
 Vue.use(Vuex);
 
 const CATEGORIES = {
@@ -34,6 +35,7 @@ export const store = new Vuex.Store({
                 PARSE_COMMIT_DATA(state, response) {
                     state.allInformation = response;
                 },
+
                 COMMIT_UPDATE_DATA(state, { id, dataName, dataValue }) {
                     const index = state.allInformation.findIndex((item) => item.id === id);
                     state.allInformation[index][dataName] = dataValue;
@@ -41,14 +43,24 @@ export const store = new Vuex.Store({
             },
 
             actions: {
+                loadMockDataToLocalStorage() {
+                    const isLocalStorageDataExist = localStorage.getItem('response');
+                    if (!isLocalStorageDataExist) {
+                        localStorage.setItem('response',  JSON.stringify(mockData));
+
+                    }
+                },
+
                 getMockData() {
-                    const response = JSON.parse(JSON.stringify(mockData))
+                    const response = JSON.parse(localStorage.getItem('response'));
                     store.commit('Table/PARSE_COMMIT_DATA', response);
                 },
 
                 setNewData({commit}, { id, dataName, dataValue } ) {
                     //here will be request on Api for updating data, but at now change state
-                    store.commit('Table/COMMIT_UPDATE_DATA', { id, dataName, dataValue });                },
+                    store.commit('Table/COMMIT_UPDATE_DATA', { id, dataName, dataValue });
+                    localStorage.setItem('response',  JSON.stringify(store.getters["Table/getAllInformation"]));
+                },
             },
         }
     }

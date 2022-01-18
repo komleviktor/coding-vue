@@ -42,8 +42,9 @@
     },
   })
 export default class Page extends Vue {
-    mounted() {
-      this.getMockData();
+    async mounted() {
+      await  this.loadMockDataToLocalStorage()
+      await this.getMockData();
     }
     //computed
     //mapGetters
@@ -51,6 +52,7 @@ export default class Page extends Vue {
     public getProduction!: Array<object>
     @table.Getter
     public getConsumption!: Array<object>
+    @table.Getter
     public getExchange!: Array<object>
     @table.Getter
     public getVolume!: Array<object>
@@ -63,6 +65,9 @@ export default class Page extends Vue {
     //mapAction
     @table.Action
     public getMockData!: () => void
+
+    @table.Action
+    public loadMockDataToLocalStorage!: () => void
 
   }
 </script>

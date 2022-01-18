@@ -51,8 +51,8 @@
 <script lang="ts">
   import { Component, Prop } from 'vue-property-decorator'
   import Vue from 'vue'
-  import { namespace } from 'vuex-class'
-  const table = namespace('Table')
+  import { Action } from 'vuex-class';
+  const namespace: string = 'table';
 
   @Component
   export default class TableDataRow extends Vue {
@@ -66,8 +66,9 @@
 
 
     //mapAction
-    @table.Action
-    public setNewData!: ({ id, dataName, dataValue }) => void
+
+    @Action('setNewData', { namespace })
+    setNewData: any;
 
     //methods
     public update(event, dataName): void {

@@ -37,7 +37,7 @@ import { Prop } from "vue-property-decorator";
 
   //computed
   isListExist (): any {
-    return this.items?.length;
+    return Boolean(this.items?.length);
   }
 
 }

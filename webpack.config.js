@@ -11,7 +11,7 @@ module.exports = {
         filename: '[name].js'
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json', '.ts'],
+        extensions: ['.js', '.vue', '.json', '.ts', '.less'],
         alias: {
             '@': path.resolve(__dirname, '..', 'src'),
             vue$: 'vue/dist/vue.esm.js',
@@ -39,7 +39,7 @@ module.exports = {
                     'sass-loader'
                 ]
             }
-        ]
+        ],
     },
     plugins: [
         new VueLoaderPlugin(),

@@ -33,8 +33,8 @@
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import Tables from "../blocks/Tables.vue";
-  import { namespace } from 'vuex-class'
-  const table = namespace('Table')
+  import { Action, Getter } from 'vuex-class';
+  const namespace: string = 'table';
 
   @Component({
     components: {
@@ -42,27 +42,37 @@
     },
   })
 export default class Page extends Vue {
-    mounted() {
-      this.getMockData();
+     async mounted() {
+       await this.loadMockDataToLocalStorage()
+       await this.getMockData();
     }
     //computed
     //mapGetters
-    @table.Getter
-    public getProduction!: Array<object>
-    @table.Getter
-    public getConsumption!: Array<object>
-    public getExchange!: Array<object>
-    @table.Getter
-    public getVolume!: Array<object>
-    @table.Getter
-    public getPrice!: Array<object>
-    @table.Getter
-    public getOtherCategories!: Array<object>
+    @Getter('getProduction', { namespace })
+    getProduction: Array<object>;
+
+    @Getter('getConsumption', { namespace })
+    getConsumption: Array<object>;
+
+    @Getter('getExchange', { namespace })
+    getExchange: Array<object>;
+
+    @Getter('getVolume', { namespace })
+    getVolume: Array<object>;
+
+    @Getter('getPrice', { namespace })
+    getPrice: Array<object>;
+
+    @Getter('getOtherCategories', { namespace })
+    getOtherCategories: Array<object>;
 
     //methods
     //mapAction
-    @table.Action
-    public getMockData!: () => void
+    @Action('getMockData', { namespace })
+    getMockData: any;
+
+    @Action('loadMockDataToLocalStorage', { namespace })
+    loadMockDataToLocalStorage: any;
 
   }
 </script>

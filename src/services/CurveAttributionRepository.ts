@@ -1,21 +1,32 @@
-import { CATEGORIES } from '../constants/common'
+import { CATEGORIES } from '../constants/common';
+import mockData from "../store/mockData.json"
 
-export class CurvesAttributeParser {
-    private readonly store: Array<any>;
+interface Curve {
+    id: number,
+    name: string,
+    alias: string,
+    sourceSystem: string,
+    category: string,
+    updatedBy: string
+}
 
-    constructor(data: Array<any>) {
+export class CurveAttributionRepository {
+    private readonly store: Array<Curve>;
+
+    constructor() {
         const localStore = JSON.parse(localStorage.getItem('response'));
 
         if (!localStore) {
-            localStorage.setItem('response', JSON.stringify(data));
+            localStorage.setItem('response', JSON.stringify(mockData));
         }
 
         this.store = JSON.parse(localStorage.getItem('response'));
     }
 
-    readCurves(category: string): Array<any> {
+    readCurves(category: string): Array<Curve> {
         if (category === 'other') {
-            return this.store.filter(item => !Object.values(CATEGORIES).includes(item?.category));
+            const array: Array<string> = Object.values(CATEGORIES);
+            return this.store.filter(item => !array.includes(item.category));
         }
 
         return this.store.filter(item => item.category === category);

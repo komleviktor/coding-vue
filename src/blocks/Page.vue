@@ -39,8 +39,7 @@
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import Tables from "../blocks/Tables.vue";
-  import { CurvesAttributeParser } from "../services/curvesAttributeParser";
-  import mockData from "../store/mockData.json";
+  import { CurveAttributionRepository } from "../services/CurveAttributionRepository";
   import { CATEGORIES } from '../constants/common'
 
   @Component({
@@ -50,7 +49,7 @@
   })
   export default class Page extends Vue {
     private CATEGORIES = CATEGORIES;
-    private data = new CurvesAttributeParser(mockData);
+    private data = new CurveAttributionRepository();
 
     //computed
     getData(category: string): Array<any> {

@@ -2,28 +2,39 @@
   <div>
     <tables
         categoryName="Production Category"
-        :items="getProduction"
+        :items="getData(CATEGORIES.PRODUCTION)"
+        @update="update"
     />
     <tables
         categoryName="Consumption Category"
-        :items="getConsumption"
+        :items="getData(CATEGORIES.CONSUMPTION)"
+        @update="update"
+
     />
     <tables
         categoryName="Volume Category"
-        :items="getVolume"
+        :items="getData(CATEGORIES.VOLUME)"
+        @update="update"
+
     />
     <tables
         categoryName="Exchange Category"
-        :items="getExchange"
+        :items="getData(CATEGORIES.EXCHANGE)"
+        @update="update"
+
     />
 
     <tables
         categoryName="Price Category"
-        :items="getPrice"
+        :items="getData(CATEGORIES.PRICE)"
+        @update="update"
+
     />
     <tables
         categoryName="Other Category"
-        :items="getOtherCategories"
+        :items="getData('other')"
+        @update="update"
+
     />
   </div>
 </template>
@@ -33,47 +44,29 @@
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import Tables from "../blocks/Tables.vue";
-  import { Action, Getter } from 'vuex-class';
-  const namespace: string = 'table';
+  import { services } from "../services/servise";
+  import mockData from "../store/mockData.json";
+  import { CATEGORIES } from '../constants/common'
 
   @Component({
     components: {
       Tables,
     },
   })
-export default class Page extends Vue {
-     async mounted() {
-       await this.loadMockDataToLocalStorage()
-       await this.getMockData();
-    }
+  export default class Page extends Vue {
+    private CATEGORIES = CATEGORIES;
+    private data = new services(mockData);
+
     //computed
-    //mapGetters
-    @Getter('getProduction', { namespace })
-    getProduction: Array<object>;
+    getData(category: string): Array<any> {
+      return this.data.read(category);
+    }
 
-    @Getter('getConsumption', { namespace })
-    getConsumption: Array<object>;
-
-    @Getter('getExchange', { namespace })
-    getExchange: Array<object>;
-
-    @Getter('getVolume', { namespace })
-    getVolume: Array<object>;
-
-    @Getter('getPrice', { namespace })
-    getPrice: Array<object>;
-
-    @Getter('getOtherCategories', { namespace })
-    getOtherCategories: Array<object>;
 
     //methods
-    //mapAction
-    @Action('getMockData', { namespace })
-    getMockData: any;
-
-    @Action('loadMockDataToLocalStorage', { namespace })
-    loadMockDataToLocalStorage: any;
-
+    async update(id: number, category: string, value: string): Promise<any> {
+      await this.data.write(id, category,value);
+    }
   }
 </script>
 

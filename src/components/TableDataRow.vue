@@ -51,8 +51,6 @@
 <script lang="ts">
   import { Component, Prop } from 'vue-property-decorator'
   import Vue from 'vue'
-  import { Action } from 'vuex-class';
-  const namespace: string = 'table';
 
   @Component
   export default class TableDataRow extends Vue {
@@ -64,15 +62,9 @@
     @Prop({ required: false, type: String, default: 'Category' }) readonly category: string
     @Prop({ required: false, type: String, default: 'Updated by' }) readonly updatedBy: string
 
-
-    //mapAction
-
-    @Action('setNewData', { namespace })
-    setNewData: any;
-
     //methods
     public update(event, dataName): void {
-      this.setNewData({ id: this.id, dataName, dataValue: event.target.value })
+        this.$emit('update', this.id, dataName, event.target.value)
     }
   }
 </script>

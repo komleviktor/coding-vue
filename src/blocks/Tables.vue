@@ -10,6 +10,7 @@
           :name="item.name"
           :source-system="item.sourceSystem"
           :updated-by="item.updatedBy"
+          @update="update"
       />
     </div>
   </div>
@@ -38,6 +39,11 @@ import { Prop } from "vue-property-decorator";
   //computed
   isListExist (): any {
     return Boolean(this.items?.length);
+  }
+
+  //methods
+  public update(id: number, category: string, value: string): void {
+    this.$emit('update', id, category, value);
   }
 
 }

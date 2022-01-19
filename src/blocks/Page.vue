@@ -39,7 +39,7 @@
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import Tables from "../blocks/Tables.vue";
-  import { CurveAttributionRepository } from "../services/CurveAttributionRepository";
+  import { CurveAttributionRepository, Curve } from "../services/CurveAttributionRepository";
   import { CATEGORIES } from '../constants/common'
 
   @Component({
@@ -52,13 +52,13 @@
     private data = new CurveAttributionRepository();
 
     //computed
-    getData(category: string): Array<any> {
+    getData(category: string): Array<Curve> {
       return this.data.readCurves(category);
     }
 
     //methods
-    async update(id: number, category: string, value: string): Promise<any> {
-      await this.data.writeCurves(id, category, value);
+    async update(id: number, fieldName: string, value: string): Promise<void> {
+      await this.data.writeCurves(id, fieldName, value);
     }
   }
 </script>

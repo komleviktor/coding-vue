@@ -41,8 +41,8 @@
   }
 
   //methods
-  public update(id: number, category: string, value: string): void {
-    this.$emit('update', id, category, value);
+  public update(id: number, fieldName: string, value: string): void {
+    this.$emit('update', id, fieldName, value);
   }
 }
 </script>

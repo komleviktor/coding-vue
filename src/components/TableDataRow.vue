@@ -63,8 +63,8 @@
     @Prop({ required: false, type: String, default: 'Updated by' }) readonly updatedBy: string
 
     //methods
-    public update(event, dataName): void {
-        this.$emit('update', this.id, dataName, event.target.value)
+    public update(event, fieldName): void {
+        this.$emit('update', this.id, fieldName, event.target.value)
     }
   }
 </script>

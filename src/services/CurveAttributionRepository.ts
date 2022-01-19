@@ -1,7 +1,7 @@
 import { CATEGORIES } from '../constants/common';
 import mockData from "../store/mockData.json"
 
-interface Curve {
+export interface Curve {
     id: number,
     name: string,
     alias: string,
@@ -32,9 +32,9 @@ export class CurveAttributionRepository {
         return this.store.filter(item => item.category === category);
     }
 
-    writeCurves(id: number, category: string, value: string): Promise<any> {
+    writeCurves(id: number, fieldName: string, value: string): Promise<void> {
         const index = this.store.findIndex((item) => item.id === id);
-        this.store[index][category] = value;
+        this.store[index][fieldName] = value;
         localStorage.setItem('response', JSON.stringify(this.store));
 
         return Promise.resolve();

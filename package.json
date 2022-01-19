@@ -25,6 +25,7 @@
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.7",
     "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-typescript": "^7.16.8",
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-typescript": "^7.16.7",
     "@vue/babel-preset-jsx": "^1.2.4",
@@ -32,7 +33,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^21.2.0",
     "babel-preset-env": "^1.6.0",
-    "fs": "^0.0.1-security",
     "jest": "^21.2.1",
     "jest-serializer-vue": "^2.0.2",
     "jsdom": "^19.0.0",
@@ -51,12 +51,14 @@
     },
     "moduleFileExtensions": [
       "js",
+      "ts",
       "json",
       "vue"
     ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+      "^.+\\.ts$": "<rootDir>/node_modules/babel-jest"
     }
   }
 }

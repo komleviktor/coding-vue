@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import table from '../Tables.vue'
+import table from '../../../src/blocks/Tables.vue'
 
 describe('Component', () => {
     let wrapper;

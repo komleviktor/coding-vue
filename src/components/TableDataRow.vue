@@ -70,56 +70,56 @@
 </script>
 
 <style lang="scss" scoped>
-$med-light: #dadada;
-$mobile           : 48em;      // 768px
-$tablet           : 62em;      // 992px
+  $med-light: #dadada;
+  $mobile: 48em;      // 768px
+  $tablet: 62em;      // 992px
 
-.borderedInBottom {
-  display: block;
-  border-bottom: 1px solid $med-light;
-}
-
-.table {
-  td {
-    cursor: default;
-    word-break: break-word;
+  .borderedInBottom {
+    display: block;
+    border-bottom: 1px solid $med-light;
   }
 
-  @media (min-width: $mobile) {
-    .afterHeaderCell {
-      padding-top: 5px;
-      padding-bottom: 5px;
+  .table {
+    td {
+      cursor: default;
+      word-break: break-word;
     }
-  }
 
-  .firstColumnCell {
     @media (min-width: $mobile) {
-      width: 18%;
-      padding-left: 30px;
+      .afterHeaderCell {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
     }
 
-    @media (min-width: $tablet) {
-      width: 50px;
+    .firstColumnCell {
+      @media (min-width: $mobile) {
+        width: 18%;
+        padding-left: 30px;
+      }
+
+      @media (min-width: $tablet) {
+        width: 50px;
+        text-align: center;
+        padding-left: initial;
+      }
+    }
+
+    .notFirstColumnCell {
       text-align: center;
-      padding-left: initial;
+
+      @media (min-width: $mobile) {
+        padding-left: 80px;
+      }
+
+      @media (min-width: $tablet) {
+        width: 220px;
+        padding-left: initial;
+      }
+    }
+
+    .secondColumnCell {
+      text-align: center;
     }
   }
-
-  .notFirstColumnCell {
-    text-align: center;
-
-    @media (min-width: $mobile) {
-      padding-left: 80px;
-    }
-
-    @media (min-width: $tablet) {
-      width: 220px;
-      padding-left: initial;
-    }
-  }
-
-  .secondColumnCell {
-    text-align: center;
-  }
-}
 </style>

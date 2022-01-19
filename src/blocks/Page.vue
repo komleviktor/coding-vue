@@ -9,32 +9,27 @@
         categoryName="Consumption Category"
         :items="getData(CATEGORIES.CONSUMPTION)"
         @update="update"
-
     />
     <tables
         categoryName="Volume Category"
         :items="getData(CATEGORIES.VOLUME)"
         @update="update"
-
     />
     <tables
         categoryName="Exchange Category"
         :items="getData(CATEGORIES.EXCHANGE)"
         @update="update"
-
     />
 
     <tables
         categoryName="Price Category"
         :items="getData(CATEGORIES.PRICE)"
         @update="update"
-
     />
     <tables
         categoryName="Other Category"
         :items="getData('other')"
         @update="update"
-
     />
   </div>
 </template>
@@ -44,7 +39,7 @@
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import Tables from "../blocks/Tables.vue";
-  import { CurvesAttributeParser } from "../services/servise";
+  import { CurvesAttributeParser } from "../services/curvesAttributeParser";
   import mockData from "../store/mockData.json";
   import { CATEGORIES } from '../constants/common'
 
@@ -62,13 +57,9 @@
       return this.data.readCurves(category);
     }
 
-
     //methods
     async update(id: number, category: string, value: string): Promise<any> {
-      await this.data.writeCurves(id, category,value);
+      await this.data.writeCurves(id, category, value);
     }
   }
 </script>
-
-<style lang="scss" scoped>
-</style>

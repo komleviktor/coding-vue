@@ -56,58 +56,57 @@
   }
 </script>
 
-
 <style lang="scss" scoped>
-$med-light: #dadada;
-$mobile           : 48em;      // 768px
-$tablet           : 62em;      // 992px
-.main {
-  display: block;
-  border-bottom: 1px solid $med-light;
-  td {
-    cursor: default;
-    word-break: break-word;
+  $med-light: #dadada;
+  $mobile: 48em;      // 768px
+  $tablet: 62em;      // 992px
+  .main {
+    display: block;
+    border-bottom: 1px solid $med-light;
+    td {
+      cursor: default;
+      word-break: break-word;
+    }
+
+    @media (min-width: $mobile) {
+      .headCell {
+        padding: 15px 0;
+        font-weight: bold;
+      }
+
+      .firstColumnCell {
+        @media (min-width: $mobile) {
+          width: 18%;
+          padding-left: 30px;
+        }
+
+        @media (min-width: $tablet) {
+          width: 50px;
+          text-align: center;
+          padding-left: initial;
+        }
+      }
+
+      .secondColumnCell {
+        @media (min-width: $mobile) {
+          width: 23%;
+        }
+
+        @media (min-width: $tablet) {
+          width: 204px;
+        }
+      }
+
+      .notFirstColumnCell {
+        @media (min-width: $mobile) {
+          padding-left: 80px;
+        }
+
+        @media (min-width: $tablet) {
+          width: 220px;
+          padding-left: initial;
+        }
+      }
+    }
   }
-
-  @media (min-width: $mobile) {
-    .headCell {
-      padding: 15px 0;
-      font-weight: bold;
-    }
-
-    .firstColumnCell {
-      @media (min-width: $mobile) {
-        width: 18%;
-        padding-left: 30px;
-      }
-
-      @media (min-width: $tablet) {
-        width: 50px;
-        text-align: center;
-        padding-left: initial;
-      }
-    }
-
-    .secondColumnCell {
-      @media (min-width: $mobile) {
-        width: 23%;
-      }
-
-      @media (min-width: $tablet) {
-        width: 204px;
-      }
-    }
-
-    .notFirstColumnCell {
-      @media (min-width: $mobile) {
-        padding-left: 80px;
-      }
-
-      @media (min-width: $tablet) {
-        width: 220px;
-        padding-left: initial;
-      }
-    }
-  }
-}
 </style>

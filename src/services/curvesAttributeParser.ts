@@ -7,7 +7,7 @@ export class CurvesAttributeParser {
         const localStore = JSON.parse(localStorage.getItem('response'));
 
         if (!localStore) {
-            localStorage.setItem('response',  JSON.stringify(data));
+            localStorage.setItem('response', JSON.stringify(data));
         }
 
         this.store = JSON.parse(localStorage.getItem('response'));
@@ -24,7 +24,7 @@ export class CurvesAttributeParser {
     writeCurves(id: number, category: string, value: string): Promise<any> {
         const index = this.store.findIndex((item) => item.id === id);
         this.store[index][category] = value;
-        localStorage.setItem('response',  JSON.stringify(this.store));
+        localStorage.setItem('response', JSON.stringify(this.store));
 
         return Promise.resolve();
     };

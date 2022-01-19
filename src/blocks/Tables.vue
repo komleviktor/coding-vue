@@ -16,20 +16,19 @@
   </div>
 </template>
 
-
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component'
-import TableHeadRow from "../components/TableHeadRow.vue";
-import TableDataRow from "../components/TableDataRow.vue";
-import { Prop } from "vue-property-decorator";
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import TableHeadRow from "../components/TableHeadRow.vue";
+  import TableDataRow from "../components/TableDataRow.vue";
+  import { Prop } from "vue-property-decorator";
 
-@Component({
-  components: {
-    TableDataRow,
-    TableHeadRow,
-  },
-})
+  @Component({
+    components: {
+      TableDataRow,
+      TableHeadRow,
+    },
+  })
   export default class Table extends Vue {
 
   //props
@@ -45,9 +44,5 @@ import { Prop } from "vue-property-decorator";
   public update(id: number, category: string, value: string): void {
     this.$emit('update', id, category, value);
   }
-
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

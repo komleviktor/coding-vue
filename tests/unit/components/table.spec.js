@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import table from '../../../src/blocks/Tables.vue'
 
-describe('Component', () => {
+describe('Table component', () => {
     let wrapper;
     beforeEach(() => {
         wrapper = mount(table,{
@@ -14,12 +14,10 @@ describe('Component', () => {
 
     test('is an instance of Vue', () => {
         expect(wrapper.vm).toBeTruthy();
-
     })
 
     test('set correct category name', () => {
         expect(wrapper.vm.categoryName).toEqual('Category');
-
     })
 
     test('should not show component with empty data ', () => {

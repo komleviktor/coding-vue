@@ -26,6 +26,7 @@ export class CurveAttributionRepository {
     readCurves(category: string): Array<Curve> {
         if (category === 'other') {
             const array: Array<string> = Object.values(CATEGORIES);
+
             return this.store.filter(item => !array.includes(item.category));
         }
 
@@ -33,10 +34,19 @@ export class CurveAttributionRepository {
     }
 
     writeCurves(id: number, fieldName: string, value: string): Promise<void> {
-        const index = this.store.findIndex((item) => item.id === id);
-        this.store[index][fieldName] = value;
-        localStorage.setItem('response', JSON.stringify(this.store));
 
-        return Promise.resolve();
-    };
+        try {
+            const index = this.store.findIndex((item) => item.id === id);
+
+            this.store[index][fieldName] = value;
+            localStorage.setItem('response', JSON.stringify(this.store));
+            return Promise.resolve()
+
+        } catch (error) {
+            console.error('error while fetching curves', error)
+
+            return Promise.reject()
+        }
+    }
+
 }

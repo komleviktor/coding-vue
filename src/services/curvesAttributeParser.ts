@@ -13,7 +13,7 @@ export class CurvesAttributeParser {
         this.store = JSON.parse(localStorage.getItem('response'));
     }
 
-    readCurves(category: string):Array<any> {
+    readCurves(category: string): Array<any> {
         if (category === 'other') {
             return this.store.filter(item => !Object.values(CATEGORIES).includes(item?.category));
         }

@@ -22,6 +22,7 @@
   import TableHeadRow from "../components/TableHeadRow.vue";
   import TableDataRow from "../components/TableDataRow.vue";
   import { Prop } from "vue-property-decorator";
+  import { Curve } from "../services/CurveAttributionRepository";
 
   @Component({
     components: {
@@ -32,11 +33,11 @@
   export default class Table extends Vue {
 
   //props
-  @Prop({ required: false, type: Array, default: () => [] }) readonly items: Array<object>
+  @Prop({ required: false, type: Array, default: () => [] }) readonly items: Array<Curve>
   @Prop({ required: false, type: String, default: '' }) readonly categoryName: String
 
   //computed
-  isListExist (): any {
+  isListExist (): boolean {
     return Boolean(this.items?.length);
   }
 

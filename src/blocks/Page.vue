@@ -44,7 +44,7 @@
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import Tables from "../blocks/Tables.vue";
-  import { services } from "../services/servise";
+  import { CurvesAttributeParser } from "../services/servise";
   import mockData from "../store/mockData.json";
   import { CATEGORIES } from '../constants/common'
 
@@ -55,17 +55,17 @@
   })
   export default class Page extends Vue {
     private CATEGORIES = CATEGORIES;
-    private data = new services(mockData);
+    private data = new CurvesAttributeParser(mockData);
 
     //computed
     getData(category: string): Array<any> {
-      return this.data.read(category);
+      return this.data.readCurves(category);
     }
 
 
     //methods
     async update(id: number, category: string, value: string): Promise<any> {
-      await this.data.write(id, category,value);
+      await this.data.writeCurves(id, category,value);
     }
   }
 </script>
